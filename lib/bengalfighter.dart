@@ -1,14 +1,17 @@
-import 'pages/subhashchandrabose/subhash_timeline.dart';
-import 'pages/chitaranjandas/chitudas.dart';
-import 'pages/rabindranathtagore/rabindra.dart';
-import 'pages/Bankimchandrachatterjee/bankim.dart';
-import 'pages/kudirambose/khudiram.dart';
+import 'package:legends_of_india/data/bankim_timeline.dart';
+import 'package:legends_of_india/data/chitudas_timeline.dart';
+import 'package:legends_of_india/data/khudiram_timeline.dart';
+import 'package:legends_of_india/data/rabindra_timeline.dart';
+import 'package:legends_of_india/data/subhash_timeline.dart';
+import 'package:legends_of_india/pages/detail_view_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Westbengal extends StatefulWidget {
+  const Westbengal({super.key});
+
   @override
-  _WestbengalState createState() => _WestbengalState();
+  State<Westbengal> createState() => _WestbengalState();
 }
 
 class _WestbengalState extends State<Westbengal> {
@@ -16,27 +19,42 @@ class _WestbengalState extends State<Westbengal> {
     {
       'name': 'Rabindranath Tagore',
       'image': 'assets/tagore.jpg',
-      'page': RabindraTimeline()
+      'page': DetailMapViewPage(
+        timelineEvents: rabindraTimelineEvents,
+        freedomFighterName: 'Rabindra Nath Tagore',
+      ),
     },
     {
       'name': 'Bankim Chandra Chatterjee',
       'image': 'assets/bankim.png',
-      'page': BankimTimeline()
+      'page': DetailMapViewPage(
+        timelineEvents: bankimTimelineEvents,
+        freedomFighterName: 'Bankim Chandra Chatterjee',
+      ),
     },
     {
       'name': 'Subhash Chandra Bose',
       'image': 'assets/subhash.jpg',
-      'page': SubhashTimeline(),
+      'page': DetailMapViewPage(
+        timelineEvents: subhashTimelineEvents,
+        freedomFighterName: 'Subhash Chandra Bose',
+      ),
     },
     {
       'name': 'Khudiram Bose',
       'image': 'assets/khudiram.jpg',
-      'page': KhudiramTimeline()
+      'page': DetailMapViewPage(
+        timelineEvents: khudiramTimelineEvents,
+        freedomFighterName: 'Khudiram Bose',
+      ),
     },
     {
       'name': 'Chittaranjan Das',
       'image': 'assets/Das.jpg',
-      'page': ChitaranjanTimeline()
+      'page': DetailMapViewPage(
+        timelineEvents: chitudasTimelineEvents,
+        freedomFighterName: 'Chittaranjan Das',
+      ),
     },
   ];
 
@@ -50,10 +68,14 @@ class _WestbengalState extends State<Westbengal> {
 
   void _filterSearchResults(String query) {
     setState(() {
-      filteredList = freedomFighters
-          .where((fighter) =>
-              fighter['name']!.toLowerCase().contains(query.toLowerCase()))
-          .toList();
+      filteredList =
+          freedomFighters
+              .where(
+                (fighter) => fighter['name']!.toLowerCase().contains(
+                  query.toLowerCase(),
+                ),
+              )
+              .toList();
     });
   }
 
@@ -74,26 +96,6 @@ class _WestbengalState extends State<Westbengal> {
         toolbarHeight: 100,
       ),
 
-      // appBar: AppBar(
-      //   title: Center(
-      //     child: Text('Search Freedom Fighters'),
-      //   ),
-      //   backgroundColor: Colors.green,
-      //   actions: [
-      //     IconButton(
-      //       icon: Icon(Icons.search),
-      //       onPressed: () {
-      //         showSearch(
-      //           context: context,
-      //           delegate: FreedomFighterSearchDelegate(
-      //             freedomFighters: freedomFighters,
-      //             onQueryChanged: _filterSearchResults,
-      //           ),
-      //         );
-      //       },
-      //     ),
-      //   ],
-      // ),
       body: Container(
         color: Colors.white,
         child: Column(
@@ -106,70 +108,70 @@ class _WestbengalState extends State<Westbengal> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      filteredList.length,
-                      (index) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    filteredList[index]['page'],
+                    children: List.generate(filteredList.length, (index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => filteredList[index]['page'],
+                            ),
+                          );
+                        },
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(20),
+                          width: 250,
+                          height: 300,
+                          decoration: BoxDecoration(
+                            color: Colors.green[300],
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 5,
+                                offset: Offset(2, 2),
                               ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.all(10),
-                            padding: EdgeInsets.all(20),
-                            width: 250,
-                            height: 300,
-                            decoration: BoxDecoration(
-                              color: Colors.green[300],
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                  blurRadius: 5,
-                                  offset: Offset(2, 2),
-                                ),
-                              ],
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: const Color.fromARGB(
-                                          255, 13, 102, 116),
-                                      width: 3,
-                                    ),
-                                  ),
-                                  child: Image.asset(
-                                    filteredList[index]['image']!,
-                                    alignment: Alignment.topCenter,
-                                    fit: BoxFit.cover,
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                ),
-                                const SizedBox(height: 40),
-                                Text(
-                                  filteredList[index]['name']!,
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 17, 92, 85),
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
+                            ],
                           ),
-                        );
-                      },
-                    ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: const Color.fromARGB(
+                                      255,
+                                      13,
+                                      102,
+                                      116,
+                                    ),
+                                    width: 3,
+                                  ),
+                                ),
+                                child: Image.asset(
+                                  filteredList[index]['image']!,
+                                  alignment: Alignment.topCenter,
+                                  fit: BoxFit.cover,
+                                  height: 100,
+                                  width: 100,
+                                ),
+                              ),
+                              const SizedBox(height: 40),
+                              Text(
+                                filteredList[index]['name']!,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 17, 92, 85),
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }),
                   ),
                 ),
               ),
