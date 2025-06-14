@@ -157,8 +157,7 @@ class _DetailMapViewPageState extends State<DetailMapViewPage> {
                               ),
                             ),
                             if (widget
-                                    .timelineEvents[currentIndex]
-                                    .eventImage !=
+                                    .timelineEvents[currentIndex].eventImage !=
                                 null)
                               Container(
                                 decoration: BoxDecoration(
@@ -173,11 +172,13 @@ class _DetailMapViewPageState extends State<DetailMapViewPage> {
                                   ),
                                 ),
                                 child: CachedNetworkImage(
-                                  imageUrl:
-                                      widget
-                                          .timelineEvents[currentIndex]
-                                          .eventImage
-                                          .toString(),
+                                  imageUrl: widget
+                                      .timelineEvents[currentIndex].eventImage
+                                      .toString(),
+                                  placeholder: (context, url) =>
+                                      CircularProgressIndicator(),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
                                   height: 180,
                                 ),
                               ),
@@ -225,8 +226,7 @@ class _DetailMapViewPageState extends State<DetailMapViewPage> {
                                 Padding(
                                   padding: EdgeInsets.only(bottom: 25.0),
                                   child: Text(
-                                    widget
-                                        .timelineEvents[currentIndex]
+                                    widget.timelineEvents[currentIndex]
                                         .eventHeading
                                         .toUpperCase(),
                                     style: GoogleFonts.nunitoSans(
@@ -238,8 +238,7 @@ class _DetailMapViewPageState extends State<DetailMapViewPage> {
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
-                                if (widget
-                                        .timelineEvents[currentIndex]
+                                if (widget.timelineEvents[currentIndex]
                                         .eventImage !=
                                     null)
                                   Container(
@@ -254,11 +253,15 @@ class _DetailMapViewPageState extends State<DetailMapViewPage> {
                                         width: 3,
                                       ),
                                     ),
-                                    child: Image.network(
-                                      widget
+                                    child: CachedNetworkImage(
+                                      imageUrl: widget
                                           .timelineEvents[currentIndex]
                                           .eventImage
                                           .toString(),
+                                      placeholder: (context, url) =>
+                                          CircularProgressIndicator(),
+                                      errorWidget: (context, url, error) =>
+                                          Icon(Icons.error),
                                       height: 180,
                                     ),
                                   ),
@@ -268,8 +271,7 @@ class _DetailMapViewPageState extends State<DetailMapViewPage> {
                                     left: 15.0,
                                   ),
                                   child: Text(
-                                    widget
-                                        .timelineEvents[currentIndex]
+                                    widget.timelineEvents[currentIndex]
                                         .eventStory,
                                     style: GoogleFonts.merriweather(
                                       fontSize: 17,

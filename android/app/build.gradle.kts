@@ -55,19 +55,14 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            // signingConfig = signingConfigs.getByName("debug")
             signingConfig = signingConfigs.getByName("release")
         }
     }
 }
 
 dependencies {
-    // For AGP 7.4+
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.2")
-    // For AGP 7.3
-    // coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.2.3")
-    // For AGP 4.0 to 7.2
-    // coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.9")
 }
 
 flutter {

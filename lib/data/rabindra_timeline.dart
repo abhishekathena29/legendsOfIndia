@@ -17,8 +17,8 @@ List<EventMapping> rabindraTimelineEvents = [
     geoPoint: GeoPoint(latitude: 22.5849, longitude: 88.3592),
     eventStory:
         "Rabindranath was raised in an intellectually stimulating environment. The Tagore family house in Jorasanko was a cultural hub and was in the forefront of Bengal Renaissance, where many distinguished guests, including writers, poets, social reformers, and religious leaders, often visited. This exposure to great thinkers early on significantly influenced Rabindranath's development as a writer and philosopher. By the age of 8 he started writting poems.",
-    eventImage:
-        "https://cdn.guidetour.in/wp-content/uploads/2017/12/Jorasanko-Thakur-Bari.jpg.webp",
+    // eventImage:
+    //     "https://cdn.guidetour.in/wp-content/uploads/2017/12/Jorasanko-Thakur-Bari.jpg",
   ),
   EventMapping(
     eventName: '1868',

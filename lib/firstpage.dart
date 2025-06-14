@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:legends_of_india/bengalfighter.dart';
 
 class IndiaMapPage extends StatelessWidget {
+  IndiaMapPage({super.key});
   // List of states with their coordinates (left, top positions) and corresponding pages
   final List<Map<String, dynamic>> stateCoordinates = [
     {'name': 'West Bengal', 'left': 150.0, 'top': 200.0, 'page': Westbengal()},

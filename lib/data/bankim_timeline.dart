@@ -3,7 +3,7 @@ import 'package:legends_of_india/data/event_mapping.dart';
 
 List<EventMapping> bankimTimelineEvents = [
   EventMapping(
-    eventName: '    26 June 1838',
+    eventName: '26 June 1838',
     eventHeading: "Birth of Bankim Chandra Chatterjee",
     geoPoint: GeoPoint(latitude: 22.8895, longitude: 88.4220),
     eventStory:
